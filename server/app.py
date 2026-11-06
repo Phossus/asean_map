@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 
 import pymysql
-from flask import Flask, jsonify, request
+from flask import Flask, Response, abort, jsonify, request
 from pymysql.cursors import DictCursor
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -39,10 +39,17 @@ def num(v):
     return float(v) if v is not None else None
 
 
+def image_url(row):
+    """Address of the photo endpoint; the timestamp refreshes the browser cache when the photo changes."""
+    if not row['has_image']:
+        return None
+    return '/api/motorcycles/%d/image?v=%d' % (row['id'], int(row['updated_at'].timestamp()))
+
+
 def card(row):
     return {'id': row['id'], 'brand': row['brand'], 'model': row['model'], 'model_year': row['model_year'],
             'engine_cc': row['engine_cc'], 'stars': row['stars'], 'is_new': bool(row['is_new']),
-            'image_url': row['image_url'], 'report_url': row['report_url'], 'country': row['country'],
+            'image_url': image_url(row), 'report_url': row['report_url'], 'country': row['country'],
             'scores': {code: num(row[col]) for code, col in PILLAR_FIELDS.items()},
             'total_score': num(row['total_score'])}
 
@@ -79,6 +86,17 @@ def ratings():
           ' ORDER BY model_year DESC, id DESC LIMIT %s'
     items = [card(r) for r in query(sql, (*args, limit))]
     return jsonify(count=len(items), items=items)
+
+
+@app.get('/api/motorcycles/<int:moto_id>/image')
+def motorcycle_image(moto_id):
+    rows = query('SELECT image, image_mime FROM motorcycles WHERE id = %s AND image IS NOT NULL', (moto_id,))
+    if not rows:
+        abort(404)
+    resp = Response(rows[0]['image'], mimetype=rows[0]['image_mime'] or 'application/octet-stream')
+    resp.headers['Cache-Control'] = 'public, max-age=86400'
+    resp.headers['X-Content-Type-Options'] = 'nosniff'
+    return resp
 
 
 @app.get('/api/brands')
