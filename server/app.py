@@ -47,7 +47,7 @@ def image_url(row):
 
 
 def card(row):
-    return {'id': row['id'], 'brand': row['brand'], 'model': row['model'], 'model_year': row['model_year'],
+    return {'id': row['id'], 'url': '/motorcycles/%d' % row['id'], 'brand': row['brand'], 'model': row['model'], 'model_year': row['model_year'],
             'engine_cc': row['engine_cc'], 'stars': row['stars'], 'is_new': bool(row['is_new']),
             'image_url': image_url(row), 'report_url': row['report_url'], 'country': row['country'],
             'scores': {code: num(row[col]) for code, col in PILLAR_FIELDS.items()},
@@ -57,6 +57,11 @@ def card(row):
 @app.get('/')
 def home():
     return app.send_static_file('index.html')
+
+
+@app.get('/motorcycles/<int:moto_id>')
+def motorcycle_page(moto_id):
+    return app.send_static_file('motorcycle.html')    # the page loads its data from /api/motorcycles/<id>
 
 
 @app.get('/api/health')
@@ -86,6 +91,22 @@ def ratings():
           ' ORDER BY model_year DESC, id DESC LIMIT %s'
     items = [card(r) for r in query(sql, (*args, limit))]
     return jsonify(count=len(items), items=items)
+
+
+@app.get('/api/motorcycles/<int:moto_id>')
+def motorcycle_detail(moto_id):
+    rows = query('SELECT * FROM v_rating_cards WHERE id = %s', (moto_id,))
+    if not rows:
+        abort(404)
+    item = card(rows[0])
+    item['specs'] = query('SELECT label, value FROM motorcycle_specs WHERE motorcycle_id = %s '
+                          'ORDER BY sort_order, id', (moto_id,))
+    item['features'] = query('SELECT category, feature, availability FROM motorcycle_features '
+                             'WHERE motorcycle_id = %s ORDER BY sort_order, id', (moto_id,))
+    related = query('SELECT * FROM v_rating_cards WHERE brand = %s AND id <> %s '
+                    'ORDER BY model_year DESC, id DESC LIMIT 3', (rows[0]['brand'], moto_id))
+    item['related'] = [card(r) for r in related]
+    return jsonify(item)
 
 
 @app.get('/api/motorcycles/<int:moto_id>/image')

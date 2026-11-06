@@ -41,3 +41,11 @@
 
 /* Image inside the rating card (falls back to the placeholder text if the file is missing) */
 .rating-card__img { width: 100%; height: 100%; object-fit: contain; padding: var(--space-2); }
+
+/* Whole card is clickable through the title link */
+.rating-card { position: relative; }
+.rating-card:hover { border-color: var(--color-primary); }
+.rating-card__link { color: inherit; text-decoration: none; }
+.rating-card__link::after { content: ''; position: absolute; inset: 0; }
+.rating-card__link:focus-visible { outline: none; box-shadow: none; }
+.rating-card__link:focus-visible::after { outline: 3px solid var(--color-accent); outline-offset: -3px; box-shadow: inset 0 0 0 6px var(--color-primary); border-radius: var(--radius-lg); }

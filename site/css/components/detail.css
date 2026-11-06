@@ -1,0 +1,48 @@
+/* Motorcycle detail page */
+.detail { padding-bottom: var(--space-5); }
+.breadcrumb { padding: var(--space-4) 0 var(--space-3); font-size: var(--text-sm); }
+.breadcrumb ol { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.breadcrumb li + li::before { content: '›'; margin-right: 0.5rem; color: var(--color-text-muted); }
+.breadcrumb [aria-current] { color: var(--color-text-muted); }
+
+.detail-hero { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); align-items: start; }
+.detail-hero__media { display: flex; align-items: center; justify-content: center; min-height: 18rem; padding: var(--space-3); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); color: var(--color-text-muted); font-weight: 700; }
+.detail-hero__media img { width: 100%; max-height: 24rem; object-fit: contain; }
+.detail-hero__meta { color: var(--color-text-muted); }
+.detail-hero__title { margin: var(--space-1) 0 var(--space-4); font-size: var(--text-2xl); color: var(--color-primary); }
+[data-theme='high-contrast'] .detail-hero__title { color: #fff; }
+
+.overall { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); padding: var(--space-4); background: var(--color-primary); color: #fff; border: 1px solid var(--color-outline); border-radius: var(--radius-lg); }
+.overall__label { font-size: var(--text-sm); color: var(--color-on-dark); }
+.overall__stars { display: block; font-size: 2rem; line-height: 1.1; letter-spacing: 3px; color: var(--color-accent); }
+.overall__value { display: block; font: 700 2.25rem/1.2 var(--font-heading); }
+.tag { display: inline-block; margin-left: var(--space-2); padding: 0.125rem 0.625rem; background: var(--color-accent); color: #000; border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: 700; vertical-align: middle; }
+
+.detail h2.detail__heading { margin: var(--space-6) 0 var(--space-3); font-size: var(--text-xl); color: var(--color-primary); }
+[data-theme='high-contrast'] .detail h2.detail__heading { color: #fff; }
+.pillar__score { display: block; margin: var(--space-1) 0 var(--space-2); font: 700 1.9rem/1.2 var(--font-heading); color: var(--color-primary); }
+[data-theme='high-contrast'] .pillar__score { color: #fff; }
+
+.spec-list { display: grid; gap: 0; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.spec-list div { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: space-between; padding: 0.75rem var(--space-3); }
+.spec-list div + div { border-top: 1px solid var(--color-border); }
+.spec-list dt { font-weight: 700; }
+.spec-list dd { margin: 0; color: var(--color-text-muted); }
+
+.table-scroll { overflow-x: auto; margin-bottom: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+.feature-table { width: 100%; border-collapse: collapse; min-width: 20rem; }
+.feature-table caption { padding: 0.75rem var(--space-3); text-align: left; font: 700 1.0625rem var(--font-heading); background: var(--color-tint); }
+.feature-table th, .feature-table td { padding: 0.625rem var(--space-3); text-align: left; border-top: 1px solid var(--color-border); }
+.feature-table thead th { font-size: var(--text-sm); color: var(--color-text-muted); }
+.badge { display: inline-block; padding: 0.125rem 0.625rem; border: 2px solid currentColor; border-radius: var(--radius-pill); font-size: var(--text-sm); font-weight: 700; white-space: nowrap; }
+.badge--standard::before { content: '✓ '; }
+.badge--optional::before { content: '+ '; }
+.badge--not_available::before { content: '– '; }
+.badge--standard { color: #14532d; } .badge--optional { color: #7a4b00; } .badge--not_available { color: #5b2121; }
+[data-theme='high-contrast'] .badge { color: #fff; }
+
+.mini-card { display: block; padding: var(--space-3); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text); text-decoration: none; }
+.mini-card:hover { border-color: var(--color-primary); color: var(--color-text); }
+.mini-card strong { display: block; color: var(--color-primary); font-size: var(--text-lg); }
+[data-theme='high-contrast'] .mini-card strong { color: #fff; }
+.detail__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }

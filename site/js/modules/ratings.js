@@ -29,7 +29,9 @@ export async function initRatings() {
 
     $('.rating-card__brand').textContent = m.brand;
     $('.rating-card__year').textContent = [m.model_year, m.engine_cc ? m.engine_cc + ' cc' : null].filter(Boolean).join(' · ');
-    $('.rating-card__title').textContent = m.model;
+    const titleLink = $('.rating-card__link');
+    titleLink.textContent = m.model;
+    titleLink.href = m.url;
 
     const stars = m.stars ?? 0;
     $('.rating-card__rating').setAttribute('aria-label', 'Rated ' + stars + ' out of 5 stars');
@@ -55,8 +57,7 @@ export async function initRatings() {
       list.append(li);
     });
 
-    const link = $('.rating-card__action');
-    if (m.report_url) link.href = m.report_url; else link.remove();
+    $('.rating-card__action').href = m.url;
     return node;
   }
 
