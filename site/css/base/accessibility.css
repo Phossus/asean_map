@@ -1,0 +1,5 @@
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; box-shadow: 0 0 0 5px var(--color-primary); }
+.skip-link { position: absolute; left: -999px; top: var(--space-2); z-index: 10; padding: var(--space-3) var(--space-4); background: var(--color-accent); color: var(--color-primary); font-weight: 700; }
+.skip-link:focus { left: var(--space-2); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }

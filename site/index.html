@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASEAN MAP – Motorcycle safety ratings</title>
+  <meta name="description" content="[Programme description for search results, max ~155 characters.]">
+  <meta name="theme-color" content="#0e2f5a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="utility-bar"><div class="container utility-bar__inner">
+    <label for="lang">Language</label>
+    <select id="lang" class="form-control form-control--inline"><option>English</option><option>[LANGUAGE 2]</option></select>
+    <span class="utility-bar__group" role="group" aria-label="Text size">
+      <button class="utility-bar__btn" type="button" data-text-size="down" aria-label="Decrease text size">A−</button>
+      <button class="utility-bar__btn" type="button" data-text-size="reset" aria-label="Reset text size">A</button>
+      <button class="utility-bar__btn" type="button" data-text-size="up" aria-label="Increase text size">A+</button>
+    </span>
+    <button class="utility-bar__btn" type="button" data-contrast-toggle aria-pressed="false">High contrast</button>
+    <a href="#contact">Contact</a>
+  </div></div>
+
+  <header class="site-header"><div class="container site-header__inner">
+    <a class="brand" href="#main" aria-label="ASEAN MAP home">
+      <span class="brand__logo" aria-hidden="true">[LOGO]</span>
+      <span class="brand__name">ASEAN MAP<span class="brand__tagline">[FULL PROGRAMME NAME]</span></span>
+    </a>
+    <button class="btn btn--outline menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a class="site-nav__link" aria-current="page" href="#main">Home</a>
+      <a class="site-nav__link" href="#about">About</a>
+      <a class="site-nav__link" href="#ratings">Ratings</a>
+      <a class="site-nav__link" href="#how">Assessments</a>
+      <a class="site-nav__link" href="#news">News &amp; Media</a>
+      <a class="site-nav__link" href="#contact">Contact</a>
+    </nav>
+  </div></header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title"><div class="container">
+      <h1 class="hero__title" id="hero-title">Find a safer motorcycle in [ASEAN REGION TAGLINE]</h1>
+      <p class="hero__text">[One-sentence programme description: independent safety ratings for motorcycles sold across ASEAN member countries.]</p>
+      <form class="search-form" id="search-form" aria-label="Find your motorcycle">
+        <div><label class="form-label" for="country">Country</label><select class="form-control" id="country" name="country"><option value="">All ASEAN countries</option></select></div>
+        <div><label class="form-label" for="make">Make</label><select class="form-control" id="make" name="make"><option value="">All makes</option></select></div>
+        <div><label class="form-label" for="model">Model</label><input class="form-control" id="model" name="model" type="text" placeholder="e.g. Z500"></div>
+        <div><label class="form-label" for="cc">Engine size</label><select class="form-control" id="cc" name="cc"><option value="">Any size</option><option value="0-250">Up to 250 cc</option><option value="251-500">251 to 500 cc</option><option value="501-1000">501 to 1000 cc</option><option value="1001-">Over 1000 cc</option></select></div>
+        <div><button class="btn btn--accent btn--block" type="submit">Search ratings</button></div>
+      </form>
+      <div class="chip-list"><a class="chip" href="#ratings">Latest ratings</a><a class="chip" href="#how">How ratings work</a><a class="chip" href="#apply">Apply for assessment</a></div>
+    </div></section>
+
+    <div class="container"><div class="stats">
+        <div class="stat"><b class="stat__value">[00]</b>Motorcycle models rated</div>
+        <div class="stat"><b class="stat__value">[00]</b>Manufacturers taking part</div>
+        <div class="stat"><b class="stat__value">[00]</b>Member countries</div>
+        <div class="stat"><b class="stat__value">[YEAR]</b>Programme launched</div>
+    </div></div>
+
+    <section class="section" id="ratings" aria-labelledby="ratings-title"><div class="container">
+      <div class="section__head"><div><h2 class="section__title" id="ratings-title">Latest ratings</h2><p class="section__lead">Newest motorcycles assessed by [ORGANISATION NAME].</p></div><a class="btn btn--outline" id="view-all" href="#ratings">View all ratings</a></div>
+      <p class="section__lead" id="ratings-status" role="status" aria-live="polite">Loading ratings…</p>
+      <div class="grid" id="ratings-grid"></div>
+      <template id="rating-card-template">
+        <article class="rating-card">
+          <div class="rating-card__media">
+            <span class="rating-card__badge" hidden>New</span>
+            <img class="rating-card__img" alt="" loading="lazy">
+            <span class="rating-card__placeholder" hidden>[MOTORCYCLE IMAGE]</span>
+          </div>
+          <div class="rating-card__body">
+            <p class="rating-card__meta"><span class="rating-card__brand"></span><span class="rating-card__year"></span></p>
+            <h3 class="rating-card__title"></h3>
+            <p class="rating-card__rating" role="img"><span class="rating-card__stars" aria-hidden="true"></span> <b class="rating-card__stars-text"></b></p>
+            <ul class="score-list"></ul>
+            <a class="btn btn--outline rating-card__action" href="#ratings">See full rating</a>
+          </div>
+        </article>
+      </template>
+    </div></section>
+
+    <section class="section" id="how" aria-labelledby="how-title"><div class="container">
+      <div class="section__head"><div><h2 class="section__title" id="how-title">How a rating is decided</h2><p class="section__lead">Every motorcycle is scored on four areas, then given a star rating out of 5.</p></div><a class="btn btn--outline" href="#how">Read the full approach</a></div>
+      <div class="grid">
+        <div class="pillar"><div class="pillar__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z M9 12h7 M9 16h7"/></svg></div><h3 class="pillar__title">UN Regulations</h3><p class="pillar__text">[Plain-language description of the regulations checked.]</p></div>
+        <div class="pillar"><div class="pillar__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3 class="pillar__title">Conformity of Production</h3><p class="pillar__text">[Plain-language description of how consistent quality is checked.]</p></div>
+        <div class="pillar"><div class="pillar__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16z M12 7v5l3 2"/></svg></div><h3 class="pillar__title">Safety Technology</h3><p class="pillar__text">[Plain-language description of features such as ABS.]</p></div>
+        <div class="pillar"><div class="pillar__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z M3 20c0-3.5 2.5-6 6-6s6 2.5 6 6 M15 14c3 0 6 1.5 6 5"/></svg></div><h3 class="pillar__title">Support Programme</h3><p class="pillar__text">[Plain-language description of rider safety support.]</p></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="about"><div class="container"><div class="grid grid--wide">
+      <div class="panel panel--dark"><h2 class="panel__title">Welcome to ASEAN MAP</h2><p class="panel__text">[Short intro about [ORGANISATION NAME] and the programme.]</p><a class="btn btn--accent" href="#about">Learn about us</a></div>
+      <div class="panel"><h2 class="panel__title">Our assessment approach</h2><p class="panel__text">[Short explanation of the assessment approach.]</p><a class="btn" href="#how">See how we assess</a></div>
+    </div></div></section>
+
+    <section class="section" aria-labelledby="members-title"><div class="container">
+      <div class="section__head"><div><h2 class="section__title" id="members-title">Member countries</h2><p class="section__lead">[One line about regional collaboration.]</p></div></div>
+      <ul class="grid grid--narrow">
+        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
+        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
+        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
+        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
+        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
+        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
+      </ul>
+    </div></section>
+
+    <section class="section" id="news" aria-labelledby="news-title"><div class="container">
+      <div class="section__head"><div><h2 class="section__title" id="news-title">Press room</h2><p class="section__lead">News, announcements and media from [ORGANISATION NAME].</p></div><a class="btn btn--outline" href="#news">All press releases</a></div>
+      <div class="grid grid--wide">
+        <article class="news-card"><time class="news-card__date">[DATE]</time><h3 class="news-card__title"><a href="#news">[PRESS RELEASE HEADLINE]</a></h3><p class="news-card__summary">[Two-line summary of the press release.]</p></article>
+        <article class="news-card"><time class="news-card__date">[DATE]</time><h3 class="news-card__title"><a href="#news">[PRESS RELEASE HEADLINE]</a></h3><p class="news-card__summary">[Two-line summary of the press release.]</p></article>
+        <article class="news-card"><time class="news-card__date">[DATE]</time><h3 class="news-card__title"><a href="#news">[PRESS RELEASE HEADLINE]</a></h3><p class="news-card__summary">[Two-line summary of the press release.]</p></article>
+      </div>
+    </div></section>
+
+    <section class="section" id="apply"><div class="container"><div class="panel panel--dark panel--row"><div><h2 class="panel__title">Manufacturers: submit a motorcycle</h2><p class="panel__text">[One line on eligibility and how the application works.]</p></div><a class="btn btn--accent" href="#apply">How to apply</a></div></div></section>
+  </main>
+
+  <section class="subscribe" aria-labelledby="subscribe-title"><div class="container subscribe__inner">
+    <div><h2 class="subscribe__title" id="subscribe-title">Subscribe for our latest news</h2><p>[We send updates [FREQUENCY]. Unsubscribe any time.]</p></div>
+    <form action="#" method="post"><label class="form-label" for="email">Email address</label>
+      <div class="subscribe__row"><input class="form-control" id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required><button class="btn" type="submit">Subscribe</button></div></form>
+  </div></section>
+
+  <footer class="site-footer" id="contact"><div class="container">
+    <div class="footer-grid">
+      <div><div class="brand"><span class="brand__logo" aria-hidden="true">[LOGO]</span><span class="brand__name">ASEAN MAP</span></div><p><b>[ORGANISATION NAME]</b><br>[STREET ADDRESS]<br>[CITY, POSTCODE, COUNTRY]</p></div>
+      <div><h2 class="footer-grid__title">Explore</h2><ul><li><a href="#about">About us</a></li><li><a href="#ratings">Ratings</a></li><li><a href="#how">Assessments</a></li></ul></div>
+      <div><h2 class="footer-grid__title">Press &amp; media</h2><ul><li><a href="#news">Press releases</a></li><li><a href="#news">Media gallery</a></li><li><a href="#news">Publications</a></li></ul></div>
+      <div><h2 class="footer-grid__title">Get in touch</h2><ul><li><a href="#contact">[EMAIL ADDRESS]</a></li><li>[PHONE NUMBER]</li><li><a href="#contact">[SOCIAL LINK]</a></li></ul></div>
+    </div>
+    <p class="footer-bottom">© [YEAR] ASEAN MAP · <a href="#contact">Accessibility statement</a> · <a href="#contact">Privacy</a></p>
+  </div></footer>
+</body>
+</html>

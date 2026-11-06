@@ -1,0 +1,43 @@
+/* Rating card */
+.rating-card { display: flex; flex-direction: column; overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.rating-card__media { position: relative; display: flex; align-items: center; justify-content: center; height: 10.625rem; background: var(--color-tint); color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.04em; }
+.rating-card__badge { position: absolute; top: 0.75rem; left: 0.75rem; padding: 0.125rem 0.625rem; background: var(--color-accent); color: #000; border-radius: var(--radius-sm); }
+.rating-card__body { display: flex; flex: 1; flex-direction: column; gap: 0.75rem; padding: 1.25rem 1.375rem 1.5rem; }
+.rating-card__meta { display: flex; justify-content: space-between; font-size: var(--text-sm); color: var(--color-text-muted); }
+.rating-card__title { font-size: var(--text-lg); color: var(--color-primary); }
+.rating-card__stars { font-size: 1.45rem; letter-spacing: 2px; color: var(--color-star); line-height: 1; }
+.rating-card__action { margin-top: auto; }
+[data-theme='high-contrast'] .rating-card__title, [data-theme='high-contrast'] .pillar__title { color: #fff; }
+
+/* Score list with bar. Set the bar with style="--score:70%" */
+.score-list { display: grid; gap: 0.625rem; font-size: 0.9375rem; }
+.score__row { display: flex; justify-content: space-between; font-weight: 700; }
+.score__bar { height: 0.625rem; margin-top: 0.25rem; overflow: hidden; background: #e1e7f0; border-radius: 6px; }
+.score__bar::after { content: ''; display: block; width: var(--score, 0%); height: 100%; background: var(--color-link); }
+[data-theme='high-contrast'] .score__bar { background: #333; }
+
+/* Pillar */
+.pillar { padding: 1.625rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.pillar__icon { display: flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; margin-bottom: 0.875rem; background: var(--color-primary); border: 1px solid var(--color-outline); border-radius: var(--radius-md); color: var(--color-accent); }
+.pillar__title { margin-bottom: 0.375rem; font-size: 1.1875rem; color: var(--color-primary); }
+.pillar__text { color: var(--color-text-muted); font-size: 1rem; }
+
+/* Panel */
+.panel { padding: 2.25rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 1.25rem; }
+.panel--dark { background: var(--color-primary); color: #fff; border-color: var(--color-outline); }
+.panel--dark .panel__text { color: var(--color-on-dark); }
+.panel__title { margin-bottom: 0.75rem; font-size: 1.75rem; }
+.panel__text { max-width: 32.5rem; margin-bottom: 1.375rem; }
+.panel--row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; }
+.panel--row .panel__text { margin: 0; }
+
+/* Country + news */
+.country { display: flex; gap: 0.75rem; align-items: center; padding: 1.125rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: 1rem; line-height: 1.3; }
+.country__flag { flex: none; width: 2.75rem; height: 1.875rem; border: 2px dashed #5c6b7f; border-radius: 6px; }
+.news-card { display: flex; flex-direction: column; gap: 0.625rem; padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.news-card__date { font-size: var(--text-sm); font-weight: 700; color: var(--color-text-muted); }
+.news-card__title { font-size: 1.3rem; }
+.news-card__summary { color: var(--color-text-muted); }
+
+/* Image inside the rating card (falls back to the placeholder text if the file is missing) */
+.rating-card__img { width: 100%; height: 100%; object-fit: contain; padding: var(--space-2); }

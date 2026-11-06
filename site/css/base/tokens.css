@@ -1,0 +1,42 @@
+/* Design tokens: the ONLY place raw colours, fonts and sizes live. */
+:root {
+  /* colour */
+  --color-primary: #0e2f5a;
+  --color-primary-strong: #091f3d;
+  --color-accent: #ffc933;
+  --color-link: #0b4ead;
+  --color-text: #12202f;
+  --color-text-muted: #3f4d61;
+  --color-bg: #f4f6f9;
+  --color-surface: #ffffff;
+  --color-border: #d5dce6;
+  --color-tint: #e6edf7;
+  --color-on-dark: #d6e2f2;
+  --color-star: #8a5a00;
+  --color-outline: var(--color-primary);
+
+  /* type */
+  --font-body: 'Atkinson Hyperlegible', Verdana, sans-serif;
+  --font-heading: 'Lexend', 'Atkinson Hyperlegible', Verdana, sans-serif;
+  --text-sm: 0.875rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+
+  /* spacing, shape, layout */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 1rem; --space-4: 1.5rem;
+  --space-5: 2rem; --space-6: 3rem; --space-7: 4.5rem;
+  --radius-sm: 0.5rem; --radius-md: 0.75rem; --radius-lg: 1.125rem; --radius-pill: 999px;
+  --container: 75rem;
+  --tap-target: 2.75rem;
+}
+
+/* Optional theme: switched by <html data-theme="high-contrast"> */
+[data-theme='high-contrast'] {
+  --color-primary: #000; --color-primary-strong: #000; --color-accent: #ffff00;
+  --color-link: #8cc8ff; --color-text: #fff; --color-text-muted: #fff;
+  --color-bg: #000; --color-surface: #000; --color-border: #fff;
+  --color-tint: #1a1a1a; --color-on-dark: #fff; --color-star: #ffd700;
+  --color-outline: #fff;
+}

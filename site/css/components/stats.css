@@ -1,0 +1,4 @@
+.stats { position: relative; display: grid; gap: var(--space-3); margin-top: -2.25rem; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); }
+.stat { padding: 1.25rem var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+.stat__value { display: block; font: 700 1.9rem/1.2 var(--font-heading); color: var(--color-primary); }
+[data-theme='high-contrast'] .stat__value { color: #fff; }

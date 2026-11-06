@@ -1,0 +1,6 @@
+.subscribe { margin-top: var(--space-7); background: var(--color-accent); color: #000; }
+.subscribe__inner { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; justify-content: space-between; padding-block: 2.75rem; }
+.subscribe__title { font-size: 1.75rem; }
+.subscribe__row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.subscribe .form-control { min-width: 16rem; border-color: #000; }
+.subscribe .btn { background: #000; border-color: #000; color: #fff; }
