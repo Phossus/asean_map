@@ -2,6 +2,7 @@
 import { initNavToggle } from './modules/nav-toggle.js';
 import { initTextSize } from './modules/text-size.js';
 import { initContrast } from './modules/contrast.js';
+import { initLogos } from './modules/logo.js';
 
 const root = document.querySelector('#detail');
 const ICONS = {
@@ -190,7 +191,7 @@ function notFound() {
 }
 
 async function init() {
-  initNavToggle(); initTextSize(); initContrast();
+  initNavToggle(); initTextSize(); initContrast(); initLogos();
   const id = (location.pathname.match(/\/motorcycles\/(\d+)/) || [])[1];
   try {
     const [m, pillars] = await Promise.all([id ? get('/motorcycles/' + id) : null, get('/pillars')]);

@@ -44,7 +44,10 @@
   </div></header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title"><div class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__slides" data-hero-slides aria-hidden="true"></div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container">
       <h1 class="hero__title" id="hero-title">Find a safer motorcycle in [ASEAN REGION TAGLINE]</h1>
       <p class="hero__text">[One-sentence programme description: independent safety ratings for motorcycles sold across ASEAN member countries.]</p>
       <form class="search-form" id="search-form" aria-label="Find your motorcycle">
@@ -55,7 +58,9 @@
         <div><button class="btn btn--accent btn--block" type="submit">Search ratings</button></div>
       </form>
       <div class="chip-list"><a class="chip" href="#ratings">Latest ratings</a><a class="chip" href="#how">How ratings work</a><a class="chip" href="#apply">Apply for assessment</a></div>
-    </div></section>
+      </div>
+      <button class="hero__toggle" type="button" data-hero-toggle hidden>Pause slideshow</button>
+    </section>
 
     <div class="container"><div class="stats">
         <div class="stat"><b class="stat__value" data-stat="models">–</b>Motorcycle models rated</div>

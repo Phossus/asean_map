@@ -6,3 +6,16 @@
 .chip { padding: 0.5rem 1.125rem; border: 2px solid #8fa6c4; border-radius: var(--radius-pill); color: #fff; font-weight: 700; text-decoration: none; }
 .chip:hover { background: #fff; color: #000; }
 @media (max-width: 47.5rem) { .hero__title { font-size: 1.9rem; } }
+
+/* Background slideshow behind the blue hero (placeholders until you add images/hero/hero-1.jpg ...) */
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero__slides, .hero__overlay { position: absolute; inset: 0; }
+.hero__slides { z-index: 0; }
+.hero__slide { position: absolute; inset: 0; opacity: 0; background-size: cover; background-position: center; transition: opacity 1.2s ease-in-out; }
+.hero__slide.is-active { opacity: 1; }
+.hero__slide--placeholder { display: flex; align-items: center; justify-content: flex-end; padding-right: 8%; background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 75%, #fff), var(--color-primary)); color: rgba(255, 255, 255, 0.6); font-weight: 700; letter-spacing: 0.06em; }
+.hero__slide-label { padding: 1rem 2rem; border: 2px dashed currentColor; border-radius: var(--radius-md); }
+.hero__overlay { z-index: 1; background: var(--color-primary); background: linear-gradient(90deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 82%, transparent) 55%, color-mix(in srgb, var(--color-primary) 55%, transparent) 100%); }
+.hero > .container { position: relative; z-index: 2; }
+.hero__toggle { position: absolute; z-index: 3; right: var(--space-4); bottom: var(--space-3); min-height: var(--tap-target); padding: 0 var(--space-3); background: rgba(0, 0, 0, 0.5); color: #fff; border: 2px solid #fff; border-radius: var(--radius-md); font-weight: 700; cursor: pointer; }
+.hero__toggle:hover { background: rgba(0, 0, 0, 0.75); }
