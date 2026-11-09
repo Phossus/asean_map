@@ -18,6 +18,8 @@ if env_file.exists():
             k, v = line.split('=', 1)
             os.environ.setdefault(k.strip(), v.strip())
 
+PROGRAMME_LAUNCHED = int(os.getenv('PROGRAMME_LAUNCHED', 2026))   # shown in the "Programme launched" box
+
 app = Flask(__name__, static_folder=str(ROOT / 'site'), static_url_path='')
 PILLAR_FIELDS = {'UN_REG': 'un_regulations', 'COP': 'conformity_of_production',
                  'SAFETY_TECH': 'safety_technology', 'SUPPORT': 'support_programme'}
@@ -118,6 +120,18 @@ def motorcycle_image(moto_id):
     resp.headers['Cache-Control'] = 'public, max-age=86400'
     resp.headers['X-Content-Type-Options'] = 'nosniff'
     return resp
+
+
+@app.get('/api/stats')
+def stats():
+    row = query('SELECT (SELECT COUNT(*) FROM motorcycles) AS models, '
+                '(SELECT COUNT(DISTINCT brand_id) FROM motorcycles) AS brands, '
+                '(SELECT COUNT(*) FROM countries) AS countries')[0]
+    members = query('SELECT c.name, c.iso_code, COUNT(m.id) AS models FROM countries c '
+                    'LEFT JOIN motorcycles m ON m.country_id = c.id '
+                    'GROUP BY c.id, c.name, c.iso_code ORDER BY c.name')
+    return jsonify(models=row['models'], brands=row['brands'], countries=row['countries'],
+                   launched=PROGRAMME_LAUNCHED, member_countries=members)
 
 
 @app.get('/api/brands')

@@ -29,7 +29,7 @@
 
   <header class="site-header"><div class="container site-header__inner">
     <a class="brand" href="#main" aria-label="ASEAN MAP home">
-      <span class="brand__logo" aria-hidden="true">[LOGO]</span>
+      <span class="brand__logo" data-logo="default" aria-hidden="true">[LOGO]</span>
       <span class="brand__name">ASEAN MAP<span class="brand__tagline">[FULL PROGRAMME NAME]</span></span>
     </a>
     <button class="btn btn--outline menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -58,10 +58,10 @@
     </div></section>
 
     <div class="container"><div class="stats">
-        <div class="stat"><b class="stat__value">[00]</b>Motorcycle models rated</div>
-        <div class="stat"><b class="stat__value">[00]</b>Manufacturers taking part</div>
-        <div class="stat"><b class="stat__value">[00]</b>Member countries</div>
-        <div class="stat"><b class="stat__value">[YEAR]</b>Programme launched</div>
+        <div class="stat"><b class="stat__value" data-stat="models">–</b>Motorcycle models rated</div>
+        <div class="stat"><b class="stat__value" data-stat="brands">–</b>Manufacturers taking part</div>
+        <div class="stat"><b class="stat__value" data-stat="countries">–</b>Member countries</div>
+        <div class="stat"><b class="stat__value" data-stat="launched">2026</b>Programme launched</div>
     </div></div>
 
     <section class="section" id="ratings" aria-labelledby="ratings-title"><div class="container">
@@ -103,14 +103,7 @@
 
     <section class="section" aria-labelledby="members-title"><div class="container">
       <div class="section__head"><div><h2 class="section__title" id="members-title">Member countries</h2><p class="section__lead">[One line about regional collaboration.]</p></div></div>
-      <ul class="grid grid--narrow">
-        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
-        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
-        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
-        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
-        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
-        <li class="country"><span class="country__flag" aria-hidden="true"></span><span><b>[COUNTRY]</b><br>[AGENCY NAME]</span></li>
-      </ul>
+      <ul class="grid grid--narrow" id="country-grid"></ul>
     </div></section>
 
     <section class="section" id="news" aria-labelledby="news-title"><div class="container">
@@ -133,7 +126,7 @@
 
   <footer class="site-footer" id="contact"><div class="container">
     <div class="footer-grid">
-      <div><div class="brand"><span class="brand__logo" aria-hidden="true">[LOGO]</span><span class="brand__name">ASEAN MAP</span></div><p><b>[ORGANISATION NAME]</b><br>[STREET ADDRESS]<br>[CITY, POSTCODE, COUNTRY]</p></div>
+      <div><div class="brand"><span class="brand__logo" data-logo="light" aria-hidden="true">[LOGO]</span><span class="brand__name">ASEAN MAP</span></div><p><b>[ORGANISATION NAME]</b><br>[STREET ADDRESS]<br>[CITY, POSTCODE, COUNTRY]</p></div>
       <div><h2 class="footer-grid__title">Explore</h2><ul><li><a href="#about">About us</a></li><li><a href="#ratings">Ratings</a></li><li><a href="#how">Assessments</a></li></ul></div>
       <div><h2 class="footer-grid__title">Press &amp; media</h2><ul><li><a href="#news">Press releases</a></li><li><a href="#news">Media gallery</a></li><li><a href="#news">Publications</a></li></ul></div>
       <div><h2 class="footer-grid__title">Get in touch</h2><ul><li><a href="#contact">[EMAIL ADDRESS]</a></li><li>[PHONE NUMBER]</li><li><a href="#contact">[SOCIAL LINK]</a></li></ul></div>
