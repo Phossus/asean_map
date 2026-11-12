@@ -1,6 +1,6 @@
 /* Motorcycle detail page */
 .detail { padding-bottom: var(--space-5); }
-.breadcrumb { padding: var(--space-4) 0 var(--space-3); font-size: var(--text-sm); }
+.breadcrumb { padding: var(--space-4) var(--space-4) var(--space-3); font-size: var(--text-sm); }
 .breadcrumb ol { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .breadcrumb li + li::before { content: '›'; margin-right: 0.5rem; color: var(--color-text-muted); }
 .breadcrumb [aria-current] { color: var(--color-text-muted); }

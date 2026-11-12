@@ -17,10 +17,10 @@
 .site-nav__link { display: inline-block; padding: 0.75rem 1rem; border-radius: var(--radius-md); color: var(--color-text); font-weight: 700; text-decoration: none; }
 .site-nav__link:hover { background: var(--color-tint); color: var(--color-text); }
 .site-nav__link[aria-current='page'] { background: var(--color-primary); color: #fff; outline: 2px solid var(--color-outline); }
-.menu-toggle { display: none; }
+.btn.menu-toggle { display: none; }
 
 @media (max-width: 47.5rem) {
-  .menu-toggle { display: inline-flex; }
+  .btn.menu-toggle { display: inline-flex; }
   .site-nav { display: none; width: 100%; flex-direction: column; }
   .site-nav.is-open { display: flex; }
 }

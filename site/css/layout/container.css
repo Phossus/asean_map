@@ -6,4 +6,4 @@
 .section__lead { margin-top: var(--space-1); color: var(--color-text-muted); }
 .grid { display: grid; gap: 1.375rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
 .grid--wide { grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
-.grid--narrow { grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.875rem; }
+.grid--narrow { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.875rem; }
