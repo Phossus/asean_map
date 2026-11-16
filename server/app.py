@@ -6,6 +6,8 @@ Then open: http://localhost:5000
 """
 import os
 from pathlib import Path
+from flask import Flask, Response, abort, jsonify, request
+from flask_cors import CORS
 
 import pymysql
 from flask import Flask, Response, abort, jsonify, request
@@ -22,6 +24,17 @@ if env_file.exists():
 PROGRAMME_LAUNCHED = int(os.getenv('PROGRAMME_LAUNCHED', 2026))
 
 app = Flask(__name__, static_folder=str(ROOT / 'site'), static_url_path='')
+CORS(
+    app,
+    resources={
+        r"/api/*": {
+            "origins": [
+                "https://phossus.github.io",
+                "http://localhost:5000",  # optional, for local testing
+            ]
+        }
+    },
+)
 PILLAR_FIELDS = {
     'UN_REG': 'un_regulations',
     'COP': 'conformity_of_production',
@@ -39,15 +52,21 @@ RATING_SORTS = {
 
 
 def query(sql, args=()):
-    conn = pymysql.connect(
-        host=os.getenv('DB_HOST', 'localhost'),
-        port=int(os.getenv('DB_PORT', 3306)),
-        user=os.getenv('DB_USER', 'asean_map'),
-        password=os.getenv('DB_PASSWORD', ''),
-        database=os.getenv('DB_NAME', 'asean_map'),
-        charset='utf8mb4',
-        cursorclass=DictCursor,
-    )
+    options = {
+        'host': os.getenv('DB_HOST', 'localhost'),
+        'port': int(os.getenv('DB_PORT', 3306)),
+        'user': os.getenv('DB_USER', 'asean_map'),
+        'password': os.getenv('DB_PASSWORD', ''),
+        'database': os.getenv('DB_NAME', 'asean_map'),
+        'charset': 'utf8mb4',
+        'cursorclass': DictCursor,
+        'connect_timeout': 60,  # free Enzonic DB may be asleep
+    }
+
+    if os.getenv('DB_SSL', 'false').lower() in ('true', '1', 'yes'):
+        options['ssl'] = {'ssl': {}}  # non-empty dict = TLS on
+
+    conn = pymysql.connect(**options)
     try:
         with conn.cursor() as cur:
             cur.execute(sql, args)
