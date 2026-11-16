@@ -18,13 +18,34 @@ export function firstImage(basePaths, quiet = false) {
 }
 
 export async function initLogos() {
+  // Automatically detect the GitHub Pages repository path.
+  const isGitHubPages = location.hostname.endsWith('github.io');
+
+  const pathParts = location.pathname.split('/').filter(Boolean);
+
+  const siteBase = isGitHubPages && pathParts.length > 0
+    ? `/${pathParts[0]}/`
+    : '/';
+
   for (const box of document.querySelectorAll('[data-logo]')) {
     const light = box.dataset.logo === 'light';
-    const url = await firstImage(light ? ['/assets/images/logo-light', '/assets/images/logo'] : ['/assets/images/logo']);
+
+    const url = await firstImage(
+      light
+        ? [
+            `${siteBase}assets/images/logo-light`,
+            `${siteBase}assets/images/logo`
+          ]
+        : [`${siteBase}assets/images/logo`]
+    );
+
     if (!url) continue;
+
     const img = document.createElement('img');
     img.className = 'brand__logo brand__logo--image';
-    img.src = url; img.alt = '';
+    img.src = url;
+    img.alt = '';
+
     box.replaceWith(img);
   }
 }
