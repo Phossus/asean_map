@@ -26,6 +26,7 @@ export async function initLogos() {
   const siteBase = isGitHubPages && pathParts.length > 0
     ? `/${pathParts[0]}/`
     : '/';
+}
 
 export async function initLogos() {
   const siteBase = new URL('./', document.baseURI).pathname;
@@ -57,4 +58,4 @@ export async function initLogos() {
     box.replaceWith(img);
   }
 }
-}
+
