@@ -57,3 +57,4 @@ export async function initLogos() {
     box.replaceWith(img);
   }
 }
+}
