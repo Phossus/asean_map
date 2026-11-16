@@ -27,19 +27,27 @@ export async function initLogos() {
     ? `/${pathParts[0]}/`
     : '/';
 
+export async function initLogos() {
+  const siteBase = new URL('./', document.baseURI).pathname;
+
   for (const box of document.querySelectorAll('[data-logo]')) {
     const light = box.dataset.logo === 'light';
 
-    const url = await firstImage(
-      light
-        ? [
-            `${siteBase}assets/images/logo-light`,
-            `${siteBase}assets/images/logo`
-          ]
-        : [`${siteBase}assets/images/logo`]
-    );
+    const paths = light
+      ? [
+          `${siteBase}assets/images/logo-light`,
+          `${siteBase}assets/images/logo`
+        ]
+      : [
+          `${siteBase}assets/images/logo`
+        ];
 
-    if (!url) continue;
+    const url = await firstImage(paths);
+
+    if (!url) {
+      console.warn('Could not find logo for:', box);
+      continue;
+    }
 
     const img = document.createElement('img');
     img.className = 'brand__logo brand__logo--image';
