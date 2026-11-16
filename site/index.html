@@ -10,7 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700&display=swap">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/motorcycle-catalogue.css">
+  <meta name="motorcycle-api" content="/api/ratings">
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/motorcycle-catalogue.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -36,7 +39,8 @@
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <a class="site-nav__link" aria-current="page" href="#main">Home</a>
       <a class="site-nav__link" href="#about">About</a>
-      <a class="site-nav__link" href="#ratings">Ratings</a>
+      <a class="site-nav__link" href="#ratings">Latest rating</a>
+      <a class="site-nav__link" href="#motorcycles">Motorcycles</a>
       <a class="site-nav__link" href="#how">Assessments</a>
       <a class="site-nav__link" href="#news">News &amp; Media</a>
       <a class="site-nav__link" href="#contact">Contact</a>
@@ -50,14 +54,14 @@
       <div class="container">
       <h1 class="hero__title" id="hero-title">Find a safer motorcycle in ASEAN</h1>
       <p class="hero__text">[One-sentence programme description: independent safety ratings for motorcycles sold across ASEAN member countries.]</p>
-      <form class="search-form" id="search-form" aria-label="Find your motorcycle">
+      <form class="search-form" id="home-filter-form" aria-label="Find your motorcycle">
         <div><label class="form-label" for="country">Country</label><select class="form-control" id="country" name="country"><option value="">All countries</option></select></div>
         <div><label class="form-label" for="make">Make</label><select class="form-control" id="make" name="make"><option value="">All makes</option></select></div>
         <div><label class="form-label" for="model">Model</label><input class="form-control" id="model" name="model" type="text" placeholder="e.g. Z500"></div>
         <div><label class="form-label" for="cc">Engine size</label><select class="form-control" id="cc" name="cc"><option value="">Any size</option><option value="0-250">Up to 250 cc</option><option value="251-500">251 to 500 cc</option><option value="501-1000">501 to 1000 cc</option><option value="1001-">Over 1000 cc</option></select></div>
-        <div><button class="btn btn--accent btn--block" type="submit">Search ratings</button></div>
+        <div><button class="btn btn--accent btn--block" type="submit">Find motorcycles</button></div>
       </form>
-      <div class="chip-list"><a class="chip" href="#ratings">Latest ratings</a><a class="chip" href="#how">How ratings work</a><a class="chip" href="#apply">Apply for assessment</a></div>
+      <div class="chip-list"><a class="chip" href="#ratings">Latest rating</a><a class="chip" href="#motorcycles">Motorcycle directory</a><a class="chip" href="#how">How ratings work</a><a class="chip" href="#apply">Apply for assessment</a></div>
       </div>
       <button class="hero__toggle" type="button" data-hero-toggle hidden>Pause slideshow</button>
     </section>
@@ -69,27 +73,51 @@
         <div class="stat"><b class="stat__value" data-stat="launched">2026</b>Programme launched</div>
     </div></div>
 
-    <section class="section" id="ratings" aria-labelledby="ratings-title"><div class="container">
-      <div class="section__head"><div><h2 class="section__title" id="ratings-title">Latest ratings</h2><p class="section__lead">Newest motorcycles assessed by [ORGANISATION NAME].</p></div><a class="btn btn--outline" id="view-all" href="#ratings">View all ratings</a></div>
-      <p class="section__lead" id="ratings-status" role="status" aria-live="polite">Loading ratings…</p>
-      <div class="grid" id="ratings-grid"></div>
-      <template id="rating-card-template">
-        <article class="rating-card">
-          <div class="rating-card__media">
-            <span class="rating-card__badge" hidden>New</span>
-            <img class="rating-card__img" alt="" loading="lazy">
-            <span class="rating-card__placeholder" hidden>[MOTORCYCLE IMAGE]</span>
+    <!-- Latest six motorcycles, ordered by database creation time. -->
+    <section class="section" id="ratings" aria-labelledby="ratings-title">
+      <div class="container">
+        <div class="section__head motorcycle-section-head">
+          <div>
+
+            <h2 class="section__title" id="ratings-title">Latest motorcycle ratings</h2>
+            <p class="section__lead">Explore the six most recently added motorcycles to the ASEAN MAP directory.</p>
           </div>
-          <div class="rating-card__body">
-            <p class="rating-card__meta"><span class="rating-card__brand"></span><span class="rating-card__year"></span></p>
-            <h3 class="rating-card__title"><a class="rating-card__link" href="#"></a></h3>
-            <p class="rating-card__rating" role="img"><span class="rating-card__stars" aria-hidden="true"></span> <b class="rating-card__stars-text"></b></p>
-            <ul class="score-list"></ul>
-            <a class="btn btn--outline rating-card__action" href="#" aria-hidden="true" tabindex="-1">View details</a>
+          <a class="btn btn--outline" href="motorcycle-directory.html">View all motorcycles</a>
+        </div>
+
+        <div class="motorcycle-carousel" data-latest-carousel>
+          <div class="motorcycle-carousel__controls">
+            <p class="motorcycle-carousel__hint" id="latest-motorcycles-status" role="status" aria-live="polite">Loading latest motorcycles…</p>
+            <div class="motorcycle-carousel__buttons" role="group" aria-label="Latest motorcycles carousel controls">
+              <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Previous motorcycles" disabled>‹</button>
+              <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next motorcycles" disabled>›</button>
+            </div>
           </div>
-        </article>
-      </template>
-    </div></section>
+          <div class="motorcycle-carousel__track" data-latest-track tabindex="0" role="region" aria-label="Six latest motorcycles">
+            <p class="catalogue-message">The latest motorcycles will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Homepage directory preview: eight motorcycles, with a link to the full directory. -->
+    <section class="section" id="motorcycles" aria-labelledby="motorcycles-title">
+      <div class="container">
+        <div class="section__head motorcycle-section-head">
+          <div>
+            <h2 class="section__title" id="motorcycles-title">Motorcycle directory</h2>
+            <p class="section__lead">A quick look at eight motorcycles assessed under ASEAN MAP.</p>
+          </div>
+          <span class="directory-preview-count" id="home-directory-count">Loading…</span>
+        </div>
+        <div class="motorcycle-card-grid motorcycle-card-grid--preview" id="home-motorcycle-grid" aria-live="polite">
+          <p class="catalogue-message">Loading motorcycles…</p>
+        </div>
+        <div class="directory-preview-action">
+          <a class="btn btn--accent" href="motorcycle-directory.html">View all motorcycles <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="how" aria-labelledby="how-title"><div class="container">
       <div class="section__head"><div><h2 class="section__title" id="how-title">How a rating is decided</h2><p class="section__lead">Every motorcycle is scored on four areas, then given a star rating out of 5.</p></div><a class="btn btn--outline" href="#how">Read the full approach</a></div>
@@ -132,7 +160,7 @@
   <footer class="site-footer" id="contact"><div class="container">
     <div class="footer-grid">
       <div><div class="brand"><span class="brand__logo" data-logo="light" aria-hidden="true">[LOGO]</span><span class="brand__name">ASEAN MAP</span></div><p><b>[ORGANISATION NAME]</b><br>[STREET ADDRESS]<br>[CITY, POSTCODE, COUNTRY]</p></div>
-      <div><h2 class="footer-grid__title">Explore</h2><ul><li><a href="#about">About us</a></li><li><a href="#ratings">Ratings</a></li><li><a href="#how">Assessments</a></li></ul></div>
+      <div><h2 class="footer-grid__title">Explore</h2><ul><li><a href="#about">About us</a></li><li><a href="#ratings">Latest rating</a></li><li><a href="#motorcycles">Motorcycle directory</a></li><li><a href="#how">Assessments</a></li></ul></div>
       <div><h2 class="footer-grid__title">Press &amp; media</h2><ul><li><a href="#news">Press releases</a></li><li><a href="#news">Media gallery</a></li><li><a href="#news">Publications</a></li></ul></div>
       <div><h2 class="footer-grid__title">Get in touch</h2><ul><li><a href="#contact">[EMAIL ADDRESS]</a></li><li>[PHONE NUMBER]</li><li><a href="#contact">[SOCIAL LINK]</a></li></ul></div>
     </div>

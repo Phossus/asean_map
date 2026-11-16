@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motorcycle Directory – ASEAN MAP</title>
+  <meta name="description" content="Browse and filter motorcycle safety ratings in the ASEAN MAP directory.">
+  <meta name="theme-color" content="#0e2f5a">
+  <meta name="motorcycle-api" content="/api/ratings">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/motorcycle-catalogue.css">
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/motorcycle-catalogue.js"></script>
+</head>
+<body data-motorcycle-page="directory">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="utility-bar"><div class="container utility-bar__inner">
+    <label for="lang">Language</label>
+    <select id="lang" class="form-control form-control--inline"><option>English</option><option>[LANGUAGE 2]</option></select>
+    <span class="utility-bar__group" role="group" aria-label="Text size">
+      <button class="utility-bar__btn" type="button" data-text-size="down" aria-label="Decrease text size">A−</button>
+      <button class="utility-bar__btn" type="button" data-text-size="reset" aria-label="Reset text size">A</button>
+      <button class="utility-bar__btn" type="button" data-text-size="up" aria-label="Increase text size">A+</button>
+    </span>
+    <button class="utility-bar__btn" type="button" data-contrast-toggle aria-pressed="false">High contrast</button>
+    <a href="index.html#contact">Contact</a>
+  </div></div>
+
+  <header class="site-header"><div class="container site-header__inner">
+    <a class="brand" href="index.html#main" aria-label="ASEAN MAP home">
+      <span class="brand__logo" data-logo="default" aria-hidden="true">[LOGO]</span>
+    </a>
+    <button class="btn btn--outline menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="index.html#main">Home</a>
+      <a class="site-nav__link" href="index.html#about">About</a>
+      <a class="site-nav__link" href="index.html#ratings">Latest ratings</a>
+      <a class="site-nav__link" aria-current="page" href="motorcycle-directory.html">Motorcycle directory</a>
+      <a class="site-nav__link" href="index.html#how">Assessments</a>
+      <a class="site-nav__link" href="index.html#news">News &amp; Media</a>
+      <a class="site-nav__link" href="index.html#contact">Contact</a>
+    </nav>
+  </div></header>
+
+  <main id="main" class="directory-page">
+    <section class="directory-hero" aria-labelledby="directory-title">
+      <div class="container">
+        <h1 class="section__title" id="directory-title">Motorcycle directory</h1>
+        <p class="section__lead">Search and filter all motorcycles assessed under the ASEAN Motorcycle Assessment Programme.</p>
+        <a class="directory-back-link" href="index.html#motorcycles">← Back to homepage</a>
+      </div>
+    </section>
+
+
+      <div class="container">
+        <div class="directory-filter-panel">
+          <div class="directory-filter-panel__heading">
+            <div>
+              <h2 id="directory-filter-title">Find a motorcycle</h2>
+              <p>Use one or more filters to narrow the results.</p>
+            </div>
+            <button class="btn btn--outline" type="reset" form="directory-filter-form" id="clear-directory-filters">Clear filters</button>
+          </div>
+          <form class="directory-filter-form" id="directory-filter-form">
+            <div>
+              <label class="form-label" for="directory-country">Country</label>
+              <select class="form-control" id="directory-country" name="country"><option value="">All countries</option></select>
+            </div>
+            <div>
+              <label class="form-label" for="directory-make">Make</label>
+              <select class="form-control" id="directory-make" name="make"><option value="">All makes</option></select>
+            </div>
+            <div>
+              <label class="form-label" for="directory-model">Model</label>
+              <input class="form-control" id="directory-model" name="model" type="search" placeholder="e.g. NMAX or Z500">
+            </div>
+            <div>
+              <label class="form-label" for="directory-cc">Engine size</label>
+              <select class="form-control" id="directory-cc" name="cc">
+                <option value="">Any size</option>
+                <option value="0-250">Up to 250 cc</option>
+                <option value="251-500">251 to 500 cc</option>
+                <option value="501-1000">501 to 1000 cc</option>
+                <option value="1001-">Over 1000 cc</option>
+              </select>
+            </div>
+            <div class="directory-filter-form__submit">
+              <button class="btn btn--accent btn--block" type="submit">Apply filters</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="directory-results-toolbar">
+          <p id="directory-results-status" role="status" aria-live="polite">Loading motorcycles…</p>
+          <label class="directory-sort-label" for="directory-sort">Sort by
+            <select class="form-control" id="directory-sort" name="sort">
+              <option value="created_desc">Recently added</option>
+              <option value="brand_asc">Make (A–Z)</option>
+              <option value="stars_desc">Highest star rating</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="motorcycle-card-grid motorcycle-card-grid--directory" id="directory-motorcycle-grid" aria-live="polite">
+          <p class="catalogue-message">Loading motorcycles…</p>
+        </div>
+
+        <nav class="directory-pagination" id="directory-pagination" aria-label="Motorcycle directory pages" hidden>
+          <button class="btn btn--outline" id="directory-prev" type="button" disabled>Previous</button>
+          <span id="directory-page-status" aria-live="polite">Page 1</span>
+          <button class="btn btn--outline" id="directory-next" type="button" disabled>Next</button>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact"><div class="container">
+    <div class="footer-grid">
+      <div><div class="brand"><span class="brand__logo" data-logo="light" aria-hidden="true">[LOGO]</span><span class="brand__name">ASEAN MAP</span></div><p><b>[ORGANISATION NAME]</b><br>[STREET ADDRESS]<br>[CITY, POSTCODE, COUNTRY]</p></div>
+      <div><h2 class="footer-grid__title">Explore</h2><ul><li><a href="index.html#about">About us</a></li><li><a href="index.html#ratings">Latest ratings</a></li><li><a href="motorcycle-directory.html">Motorcycle directory</a></li><li><a href="index.html#how">Assessments</a></li></ul></div>
+      <div><h2 class="footer-grid__title">Press &amp; media</h2><ul><li><a href="index.html#news">Press releases</a></li><li><a href="index.html#news">Media gallery</a></li><li><a href="index.html#news">Publications</a></li></ul></div>
+      <div><h2 class="footer-grid__title">Get in touch</h2><ul><li><a href="index.html#contact">[EMAIL ADDRESS]</a></li><li>[PHONE NUMBER]</li><li><a href="index.html#contact">[SOCIAL LINK]</a></li></ul></div>
+    </div>
+    <p class="footer-bottom">© [YEAR] ASEAN MAP · <a href="index.html#contact">Accessibility statement</a> · <a href="index.html#contact">Privacy</a></p>
+  </div></footer>
+</body>
+</html>

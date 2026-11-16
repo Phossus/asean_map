@@ -1,0 +1,196 @@
+/* ASEAN MAP motorcycle catalogue components */
+.catalogue-eyebrow {
+  margin: 0 0 8px;
+  color: #526b87;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.motorcycle-section-head { align-items: end; }
+.motorcycle-carousel { min-width: 0; }
+.motorcycle-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 14px;
+}
+.motorcycle-carousel__hint { margin: 0; color: #5b6f84; font-size: .9rem; }
+.motorcycle-carousel__buttons { display: flex; gap: 8px; }
+.carousel-arrow {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid #cbd7e3;
+  border-radius: 50%;
+  background: #fff;
+  color: #0e2f5a;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.carousel-arrow:hover:not(:disabled), .carousel-arrow:focus-visible { background: #eaf1f8; border-color: #0e2f5a; }
+.carousel-arrow:disabled { opacity: .38; cursor: not-allowed; }
+.motorcycle-carousel__track {
+  display: grid;
+  grid-auto-columns: calc((100% - 32px) / 3);
+  grid-auto-flow: column;
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 2px 2px 16px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #aab9c9 #edf1f5;
+}
+.motorcycle-carousel__track > * { scroll-snap-align: start; }
+.motorcycle-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.motorcycle-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #dce5ee;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(14, 47, 90, .055);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.motorcycle-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(14, 47, 90, .11);
+}
+.motorcycle-card__visual {
+  position: relative;
+  display: grid;
+  min-height: 168px;
+  aspect-ratio: 16 / 10;
+  place-items: center;
+  overflow: hidden;
+  padding: 18px;
+  background: linear-gradient(145deg, #edf3f8, #f8fafc);
+}
+.motorcycle-card__image { display: block; width: 100%; height: 100%; object-fit: contain; }
+.motorcycle-card__placeholder {
+  display: grid;
+  width: 100%; height: 100%;
+  place-items: center;
+  color: #8293a6;
+  text-align: center;
+}
+.motorcycle-card__placeholder svg { width: 48px; height: 48px; opacity: .7; }
+.motorcycle-card__body { display: flex; flex: 1; flex-direction: column; padding: 16px; }
+.motorcycle-card__brand {
+  margin: 0 0 5px;
+  color: #63778d;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.motorcycle-card__title {
+  margin: 0 0 9px;
+  color: #12365b;
+  font-family: Lexend, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+.motorcycle-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 0 12px;
+  color: #5d7186;
+  font-size: .82rem;
+}
+.motorcycle-card__rating { display: flex; align-items: center; gap: 8px; margin: auto 0 12px; }
+.motorcycle-card__stars { color: #d98c0b; letter-spacing: .06em; }
+.motorcycle-card__score { color: #163a5f; font-size: .86rem; font-weight: 700; }
+.motorcycle-card__date { margin: 0 0 13px; color: #728397; font-size: .76rem; }
+.motorcycle-card__action { align-self: flex-start; margin-top: auto; }
+.directory-preview-count { color: #5b6f84; font-size: .88rem; }
+.directory-preview-action { display: flex; justify-content: center; margin-top: 28px; }
+.catalogue-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 24px;
+  border: 1px dashed #bdcbd9;
+  border-radius: 14px;
+  background: #f7f9fc;
+  color: #5b6f84;
+}
+.catalogue-message--error { border-color: #d6a8a8; color: #8d3434; }
+.directory-page { min-height: 210vh; }
+.directory-hero { padding: clamp(36px, 6vw, 68px) 0 24px; background: #f1f5f9; }
+.directory-hero .section__title { margin: 0 0 12px; }
+.directory-back-link { display: inline-block; margin-top: 12px; color: #174c7c; font-weight: 700; text-decoration: none; }
+.directory-back-link:hover { text-decoration: underline; }
+.directory-filter-panel {
+  margin: 0 0 28px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid #dbe4ed;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(14, 47, 90, .06);
+}
+.directory-filter-panel__heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.directory-filter-panel__heading h2 { margin: 0 0 5px; color: #14385e; font-family: Lexend, sans-serif; font-size: 1.2rem; }
+.directory-filter-panel__heading p { margin: 0; color: #61758a; font-size: .9rem; }
+.directory-filter-form { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: end; }
+.directory-filter-form__submit { grid-column: 1 / -1; max-width: 220px; }
+.directory-results-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 18px; }
+.directory-results-toolbar p { margin: 0; color: #52677f; font-size: .92rem; }
+.directory-sort-label { display: flex; align-items: center; gap: 9px; color: #52677f; font-size: .88rem; }
+.directory-sort-label .form-control { min-width: 190px; }
+.motorcycle-card-grid--directory { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.directory-pagination { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 32px; }
+.directory-pagination[hidden] { display: none; }
+.directory-pagination span { color: #52677f; font-size: .9rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+@media (max-width: 1000px) {
+  .motorcycle-carousel__track { grid-auto-columns: calc((100% - 16px) / 2); }
+  .motorcycle-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .directory-filter-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .motorcycle-carousel__track { grid-auto-columns: minmax(0, 86%); }
+  .motorcycle-card-grid, .motorcycle-card-grid--directory { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .motorcycle-card__body { padding: 13px; }
+  .motorcycle-card__visual { min-height: 130px; padding: 12px; }
+  .motorcycle-section-head { align-items: flex-start; }
+  .directory-filter-panel__heading { align-items: flex-start; flex-direction: column; }
+  .directory-filter-form__submit { max-width: none; }
+  .directory-results-toolbar { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 420px) {
+  .motorcycle-card-grid, .motorcycle-card-grid--directory { grid-template-columns: 1fr; }
+  .motorcycle-card__visual { min-height: 180px; }
+  .directory-filter-form { grid-template-columns: 1fr; }
+  .directory-pagination { gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motorcycle-carousel__track { scroll-behavior: auto; }
+  .motorcycle-card { transition: none; }
+}
+
+
+/* Catalogue uses the existing rating-card design from main.css. */
+.motorcycle-carousel__track > .rating-card { min-width: 0; }
+.motorcycle-card-grid > .rating-card { min-width: 0; }
+.rating-card__media { min-height: 10.625rem; }
+.rating-card__meta { gap: .5rem 1rem; flex-wrap: wrap; }
+.rating-card__rating { display: grid; gap: .35rem; margin-top: auto; }
+.rating-card__score { color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 700; }
+.rating-card__title { margin: 0; }
+.rating-card__title a { color: inherit; text-decoration: none; }
+.rating-card__title a:hover { text-decoration: underline; }
+.rating-card__body { min-width: 0; }
+@media (max-width: 680px) {
+  .rating-card__media { height: 9rem; }
+}
