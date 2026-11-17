@@ -286,3 +286,6 @@
   .motorcycle-showcase .rating-card__body { padding: 1.5rem 1.25rem 1.75rem; }
   .motorcycle-showcase .rating-card__body::before { font-size: 3rem; top: .5rem; }
 }
+
+/* Show the first hero picture instantly; the slideshow fades in on top of it */
+.hero__slides { background: url('../assets/images/hero/hero-1.jpg') center / cover no-repeat; }

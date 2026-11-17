@@ -6,6 +6,10 @@
   <title>ASEAN MAP – Motorcycle safety ratings</title>
   <meta name="description" content="[Programme description for search results, max ~155 characters.]">
   <meta name="theme-color" content="#0e2f5a">
+  <link rel="preload" as="image" href="assets/images/logo.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero/hero-1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero/hero-2.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero/hero-3.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700&display=swap">
@@ -32,8 +36,7 @@
 
   <header class="site-header"><div class="container site-header__inner">
     <a class="brand" href="#main" aria-label="ASEAN MAP home">
-      <span class="brand__logo" data-logo="default" aria-hidden="true">[LOGO]</span>
-
+      <img class="brand__logo brand__logo--image" src="assets/images/logo.jpg" alt="" width="900" height="380" fetchpriority="high" decoding="async">
     </a>
     <button class="btn btn--outline menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
@@ -85,7 +88,7 @@
           <a class="btn btn--outline" href="motorcycle-directory.html">View all motorcycles</a>
         </div>
 
-        <div class="motorcycle-carousel" data-latest-carousel>
+        <div class="motorcycle-carousel motorcycle-showcase" data-latest-carousel>
           <div class="motorcycle-carousel__controls">
             <p class="motorcycle-carousel__hint" id="latest-motorcycles-status" role="status" aria-live="polite">Loading latest motorcycles…</p>
             <div class="motorcycle-carousel__buttons" role="group" aria-label="Latest motorcycles carousel controls">
@@ -159,7 +162,7 @@
 
   <footer class="site-footer" id="contact"><div class="container">
     <div class="footer-grid">
-      <div><div class="brand"><span class="brand__logo" data-logo="light" aria-hidden="true">[LOGO]</span><span class="brand__name">ASEAN MAP</span></div><p><b>[ORGANISATION NAME]</b><br>[STREET ADDRESS]<br>[CITY, POSTCODE, COUNTRY]</p></div>
+      <div><div class="brand"><img class="brand__logo brand__logo--image" src="assets/images/logo-light.svg" alt="" width="3508" height="2480" loading="lazy" decoding="async"><span class="brand__name">ASEAN MAP</span></div><p><b>[ORGANISATION NAME]</b><br>[STREET ADDRESS]<br>[CITY, POSTCODE, COUNTRY]</p></div>
       <div><h2 class="footer-grid__title">Explore</h2><ul><li><a href="#about">About us</a></li><li><a href="#ratings">Latest rating</a></li><li><a href="#motorcycles">Motorcycle directory</a></li><li><a href="#how">Assessments</a></li></ul></div>
       <div><h2 class="footer-grid__title">Press &amp; media</h2><ul><li><a href="#news">Press releases</a></li><li><a href="#news">Media gallery</a></li><li><a href="#news">Publications</a></li></ul></div>
       <div><h2 class="footer-grid__title">Get in touch</h2><ul><li><a href="#contact">[EMAIL ADDRESS]</a></li><li>[PHONE NUMBER]</li><li><a href="#contact">[SOCIAL LINK]</a></li></ul></div>
