@@ -7,8 +7,11 @@ function countryCard(c) {
   const li = document.createElement('li');
   const card = document.createElement('a');
   card.className = 'country'; card.href = '#ratings';
-  const flag = document.createElement('span');
-  flag.className = 'country__flag'; flag.setAttribute('aria-hidden', 'true');
+  const flag = document.createElement('img');
+  flag.className = 'country__flag country__flag--image';
+  flag.src = '/assets/images/flags/' + slug(c.name) + '.jpg';
+  flag.alt = ''; flag.width = 44; flag.height = 30;
+  flag.onerror = () => { flag.style.visibility = 'hidden'; };
   const text = document.createElement('span');
   const name = document.createElement('b'); name.textContent = c.name;
   text.append(name, document.createElement('br'),
@@ -16,12 +19,7 @@ function countryCard(c) {
   card.append(flag, text);
   li.append(card);
 
-  firstImage(['/assets/images/flags/' + slug(c.name)]).then((url) => {
-    if (!url) return;
-    const img = document.createElement('img');
-    img.className = 'country__flag country__flag--image'; img.src = url; img.alt = '';
-    flag.replaceWith(img);
-  });
+
   card.addEventListener('click', (event) => {          // filter the ratings by this country
     const form = document.querySelector('#search-form');
     if (!form) return;
