@@ -12,3 +12,25 @@
 @import url('components/card.css');
 @import url('components/detail.css');
 @import url('components/subscribe.css');
+
+/* ===== Logo colour theme (off in high-contrast mode) ===== */
+html:not([data-theme='high-contrast']) .site-header { border-bottom: 5px solid; border-image: linear-gradient(90deg, #15489f 0 25%, #e01f26 25% 50%, #0a0b0d 50% 75%, #fac310 75% 100%) 1; }
+html:not([data-theme='high-contrast']) .utility-bar,
+html:not([data-theme='high-contrast']) .site-footer { background: var(--color-black); }
+html:not([data-theme='high-contrast']) .site-footer .footer-grid__title { color: var(--color-accent); }
+html:not([data-theme='high-contrast']) .site-footer .footer-bottom { border-top-color: #2a2d33; }
+html:not([data-theme='high-contrast']) .hero { border-top: 3px solid #fff; }
+html:not([data-theme='high-contrast']) .btn--accent,
+html:not([data-theme='high-contrast']) .btn--accent:hover { color: var(--color-black); }
+html:not([data-theme='high-contrast']) .rating-card__badge,
+html:not([data-theme='high-contrast']) .tag { background: var(--color-red); color: #fff; }
+html:not([data-theme='high-contrast']) .section__title::after,
+html:not([data-theme='high-contrast']) .detail h2.detail__heading::after { content: ''; display: block; width: 3rem; height: 0.3rem; margin-top: 0.5rem; background: var(--color-red); border-radius: 2px; }
+html:not([data-theme='high-contrast']) .stat { border-top: 0.3rem solid var(--color-primary); }
+html:not([data-theme='high-contrast']) .stat:nth-child(2) { border-top-color: var(--color-red); }
+html:not([data-theme='high-contrast']) .stat:nth-child(3) { border-top-color: var(--color-black); }
+html:not([data-theme='high-contrast']) .stat:nth-child(4) { border-top-color: var(--color-accent); }
+html:not([data-theme='high-contrast']) .rating-card:hover,
+html:not([data-theme='high-contrast']) a.country:hover,
+html:not([data-theme='high-contrast']) .mini-card:hover { border-color: var(--color-primary); }
+html:not([data-theme='high-contrast']) .subscribe { color: var(--color-black); }

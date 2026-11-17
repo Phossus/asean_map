@@ -1,19 +1,21 @@
 /* Design tokens: the ONLY place raw colours, fonts and sizes live. */
 :root {
   /* colour */
-  --color-primary: #0e2f5a;
-  --color-primary-strong: #091f3d;
-  --color-accent: #ffc933;
-  --color-link: #0b4ead;
-  --color-text: #12202f;
-  --color-text-muted: #3f4d61;
-  --color-bg: #f4f6f9;
+  --color-primary: #15489f;
+  --color-primary-strong: #0f3577;
+  --color-accent: #fac310;
+  --color-red: #e01f26;
+  --color-black: #0a0b0d;
+  --color-link: #15489f;
+  --color-text: #0a0b0d;
+  --color-text-muted: #404652;
+  --color-bg: #f5f6f8;
   --color-surface: #ffffff;
-  --color-border: #d5dce6;
-  --color-tint: #e6edf7;
-  --color-on-dark: #d6e2f2;
-  --color-star: #8a5a00;
-  --color-outline: var(--color-primary);
+  --color-border: #dadee5;
+  --color-tint: #e7edf8;
+  --color-on-dark: #e0e8f7;
+  --color-star: #b98100;
+  --color-outline: #15489f;
 
   /* type */
   --font-body: 'Atkinson Hyperlegible', Verdana, sans-serif;

@@ -194,3 +194,81 @@
 @media (max-width: 680px) {
   .rating-card__media { height: 9rem; }
 }
+
+
+/* Catalogue: swap old navy for logo blue */
+.carousel-arrow { color: #15489f; }
+.carousel-arrow:hover:not(:disabled), .carousel-arrow:focus-visible { background: #e7edf8; border-color: #15489f; }
+.motorcycle-card { box-shadow: 0 6px 20px rgba(21, 72, 159, .07); }
+.motorcycle-card:hover { border-color: #15489f; box-shadow: 0 12px 26px rgba(21, 72, 159, .14); }
+.motorcycle-card__title { color: #0a0b0d; }
+.motorcycle-card__score { color: #15489f; }
+.directory-hero { background: #e7edf8; }
+.directory-back-link { color: #15489f; }
+.directory-filter-panel { box-shadow: 0 8px 24px rgba(21, 72, 159, .08); }
+.directory-filter-panel__heading h2 { color: #15489f; }
+
+/* ===== Latest motorcycles: showcase layout ===== */
+.motorcycle-showcase .motorcycle-carousel__buttons { display: none; }
+.motorcycle-showcase .motorcycle-carousel__controls { margin-bottom: 18px; }
+.motorcycle-showcase .motorcycle-carousel__track {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  overflow: visible;
+  padding: 0;
+  scroll-snap-type: none;
+}
+.motorcycle-showcase .catalogue-message { grid-column: 1 / -1; }
+
+/* every card except the newest: compact horizontal tile */
+.motorcycle-showcase .rating-card { flex-direction: row; align-items: stretch; transition: transform .18s ease, box-shadow .18s ease; }
+.motorcycle-showcase .rating-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(21, 72, 159, .14); }
+.motorcycle-showcase .rating-card__media { flex: 0 0 38%; height: auto; min-height: 9rem; padding: .5rem; text-align: center; }
+.motorcycle-showcase .rating-card__img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.motorcycle-showcase .rating-card__body { gap: .4rem; padding: .9rem 1rem; min-width: 0; }
+.motorcycle-showcase .rating-card__title { font-size: 1.05rem; line-height: 1.3; }
+.motorcycle-showcase .rating-card__stars { font-size: 1.1rem; }
+.motorcycle-showcase .rating-card__score { font-size: .85rem; font-weight: 700; }
+.motorcycle-showcase .rating-card:nth-child(6):last-child { grid-column: 2 / span 2; grid-row: 3; }
+
+/* the newest motorcycle: big spotlight card */
+.motorcycle-showcase .rating-card:first-child {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  flex-direction: column;
+  background: linear-gradient(160deg, var(--color-primary), var(--color-primary-strong));
+  border-color: var(--color-primary-strong);
+  color: #fff;
+}
+.motorcycle-showcase .rating-card:first-child .rating-card__media {
+  flex: 0 0 auto;
+  height: 17rem;
+  padding: 1.25rem;
+  background: radial-gradient(circle at 50% 55%, #ffffff 0, #e7edf8 70%);
+  border-bottom: 5px solid var(--color-accent);
+}
+.motorcycle-showcase .rating-card:first-child .rating-card__media::before {
+  content: 'Newest addition';
+  position: absolute; top: .9rem; left: .9rem; z-index: 1;
+  padding: .25rem .75rem;
+  background: var(--color-accent); color: var(--color-black);
+  border-radius: var(--radius-pill);
+  font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+}
+.motorcycle-showcase .rating-card:first-child .rating-card__badge { display: none; }
+.motorcycle-showcase .rating-card:first-child .rating-card__body { gap: .75rem; padding: 1.5rem; justify-content: flex-end; }
+.motorcycle-showcase .rating-card:first-child .rating-card__meta { color: var(--color-on-dark); }
+.motorcycle-showcase .rating-card:first-child .rating-card__title { font-size: var(--text-xl); }
+.motorcycle-showcase .rating-card:first-child .rating-card__link { color: #fff; }
+.motorcycle-showcase .rating-card:first-child .rating-card__stars { font-size: 1.6rem; color: var(--color-accent); }
+.motorcycle-showcase .rating-card:first-child .rating-card__score { color: #fff; font-size: 1rem; }
+
+@media (max-width: 64rem) {
+  .motorcycle-showcase .motorcycle-carousel__track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .motorcycle-showcase .rating-card:first-child { grid-column: 1 / -1; grid-row: auto; }
+  .motorcycle-showcase .rating-card:nth-child(6):last-child { grid-column: 1 / -1; grid-row: auto; }
+}
+@media (max-width: 40rem) {
+  .motorcycle-showcase .motorcycle-carousel__track { grid-template-columns: 1fr; }
+}
