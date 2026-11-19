@@ -108,7 +108,21 @@ function results(m, pillars) {
 function documents(m) {
   const section = el('section', 'container', null, { 'aria-labelledby': 'docs-title' });
   section.append(el('h2', 'detail__heading', 'Documents and reports', { id: 'docs-title' }));
-  if (m.report_url) {
+  if (m.report_pdf_url) {
+    const card = el('div', 'report-card');
+    card.append(el('div', 'report-card__icon', 'PDF', { 'aria-hidden': 'true' }));
+    const info = el('div', 'report-card__info');
+    info.append(el('h3', 'report-card__title', 'Assessment report'),
+                el('p', 'report-card__text', m.brand + ' ' + m.model + (m.model_year ? ' (' + m.model_year + ')' : '') + ' · PDF'));
+    const actions = el('div', 'report-card__actions');
+    const view = link(m.report_pdf_url, 'View report', 'btn');
+    view.target = '_blank'; view.rel = 'noopener';
+    const download = link(m.report_pdf_url + '?download=1', 'Download PDF', 'btn btn--outline');
+    download.setAttribute('download', '');
+    actions.append(view, download);
+    card.append(info, actions);
+    section.append(card);
+  } else if (m.report_url) {
     const a = link(m.report_url, 'View the full test report', 'btn');
     a.target = '_blank'; a.rel = 'noopener';
     section.append(a);

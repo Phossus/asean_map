@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS motorcycles (
   is_new      BOOLEAN NOT NULL DEFAULT FALSE,
   image       LONGBLOB NULL,          -- the photo itself
   image_mime  VARCHAR(50) NULL,           -- image/png, image/jpeg or image/webp
+  report_pdf  LONGBLOB NULL,              -- the PDF report itself
   report_url  VARCHAR(500) NULL,
   source_url  VARCHAR(500) NULL,
   updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

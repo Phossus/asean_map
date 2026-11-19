@@ -60,3 +60,12 @@ html:not([data-theme='high-contrast']) .subscribe { color: var(--color-black); }
 .footer-sponsors .sponsor:nth-child(4) img,
 .footer-sponsors .sponsor:nth-child(5) img,
 .footer-sponsors .sponsor:nth-child(7) img { width: 100%; height: 100%; max-height: none; }
+
+/* ===== PDF report card on motorcycle pages ===== */
+.report-card { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-left: 0.4rem solid var(--color-primary); border-radius: var(--radius-lg); }
+.report-card__icon { display: grid; place-items: center; flex: 0 0 auto; width: 3.5rem; height: 4.25rem; background: var(--color-red, #e01f26); color: #fff; border-radius: 0.5rem; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em; }
+.report-card__info { flex: 1 1 14rem; }
+.report-card__title { font-size: 1.1875rem; color: var(--color-primary); }
+.report-card__text { color: var(--color-text-muted); }
+.report-card__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+[data-theme='high-contrast'] .report-card__title { color: #fff; }

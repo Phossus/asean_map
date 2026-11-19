@@ -5,6 +5,7 @@ Run from the project root with: python server/app.py
 Then open: http://localhost:5000
 """
 import os
+import re
 from pathlib import Path
 from flask import Flask, Response, abort, jsonify, request
 from flask_cors import CORS
@@ -254,6 +255,8 @@ def motorcycle_detail(moto_id):
     if not rows:
         abort(404)
     item = card(rows[0])
+    pdf = query('SELECT report_pdf IS NOT NULL AS has_pdf FROM motorcycles WHERE id = %s', (moto_id,))
+    item['report_pdf_url'] = ('/api/motorcycles/%d/report' % moto_id) if pdf and pdf[0]['has_pdf'] else None
     item['specs'] = query(
         'SELECT label, value FROM motorcycle_specs WHERE motorcycle_id = %s ORDER BY sort_order, id',
         (moto_id,),
@@ -285,7 +288,24 @@ def motorcycle_image(moto_id):
     response.headers['X-Content-Type-Options'] = 'nosniff'
     return response
 
-
+@app.get('/api/motorcycles/<int:moto_id>/report')
+def motorcycle_report(moto_id):
+    rows = query(
+        'SELECT m.report_pdf, b.name AS brand, m.model, m.model_year FROM motorcycles m '
+        'JOIN brands b ON b.id = m.brand_id WHERE m.id = %s AND m.report_pdf IS NOT NULL',
+        (moto_id,),
+    )
+    if not rows:
+        abort(404)
+    row = rows[0]
+    name = re.sub(r'[^A-Za-z0-9]+', '-', '%s %s %s' % (row['brand'], row['model'], row['model_year'] or '')).strip('-')
+    disposition = 'attachment' if request.args.get('download') else 'inline'
+    response = Response(row['report_pdf'], mimetype='application/pdf')
+    response.headers['Content-Disposition'] = '%s; filename="ASEAN-MAP-%s-report.pdf"' % (disposition, name)
+    response.headers['Cache-Control'] = 'public, max-age=3600'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    return response
+    
 @app.get('/api/stats')
 def stats():
     row = query(
