@@ -53,27 +53,39 @@ RATING_SORTS = {
 
 def query(sql, args=()):
     options = {
-        'host': os.getenv('DB_HOST', 'localhost'),
+        'host': os.getenv('DB_HOST', 'aseanmap-dpqgwb.db.enzonic.com'),
         'port': int(os.getenv('DB_PORT', 3306)),
-        'user': os.getenv('DB_USER', 'asean_map'),
-        'password': os.getenv('DB_PASSWORD', ''),
-        'database': os.getenv('DB_NAME', 'asean_map'),
+        'user': os.getenv('DB_USER', 'u_iqtycwjr5h'),
+        'password': os.getenv('DB_PASSWORD', 'JKoVKwItlKiLQMzlB9XdRVsOUb0jEMsV'),
+        'database': os.getenv('DB_NAME', 'main'),
         'charset': 'utf8mb4',
         'cursorclass': DictCursor,
-        'connect_timeout': 60,  # free Enzonic DB may be asleep
+        'connect_timeout': 10,
+        'read_timeout': 20,
+        'write_timeout': 20,
     }
 
     if os.getenv('DB_SSL', 'false').lower() in ('true', '1', 'yes'):
         options['ssl'] = {'ssl': {}}  # non-empty dict = TLS on
 
-    conn = pymysql.connect(**options)
-    try:
-        with conn.cursor() as cur:
-            cur.execute(sql, args)
-            return cur.fetchall()
-    finally:
-        conn.close()
-
+    last_err = None
+    for attempt in range(3):
+        conn = None
+        try:
+            conn = pymysql.connect(**options)
+            with conn.cursor() as cur:
+                cur.execute(sql, args)
+                return cur.fetchall()
+        except pymysql.err.OperationalError as err:
+            if err.args and err.args[0] in (1045, 1049):  # wrong password / database name: retrying won't help
+                raise
+            last_err = err
+            app.logger.warning('DB attempt %d failed: %s', attempt + 1, err)
+            time.sleep(4)
+        finally:
+            if conn is not None:
+                conn.close()
+    raise last_err
 
 def num(value):
     return float(value) if value is not None else None
