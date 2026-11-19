@@ -6,6 +6,7 @@ Then open: http://localhost:5000
 """
 import os
 import re
+import time
 from pathlib import Path
 from flask import Flask, Response, abort, jsonify, request
 from flask_cors import CORS
@@ -105,6 +106,16 @@ def image_url(row):
     version = int(updated.timestamp()) if hasattr(updated, 'timestamp') else 0
     return '/api/motorcycles/%d/image?v=%d' % (row['id'], version)
 
+_latest_cache = {'at': 0.0, 'ids': set()}
+
+
+def latest_ids():
+    """IDs of the 6 most recently added motorcycles. Only these get the 'New' tag (cached for 60 seconds)."""
+    if time.time() - _latest_cache['at'] > 60:
+        rows = query('SELECT id FROM motorcycles ORDER BY created_at DESC, id DESC LIMIT 6')
+        _latest_cache['ids'] = {row['id'] for row in rows}
+        _latest_cache['at'] = time.time()
+    return _latest_cache['ids']
 
 def card(row):
     """Return the common shape used by homepage cards and motorcycle detail pages."""
@@ -118,7 +129,7 @@ def card(row):
         'created_at': iso_value(row.get('created_at')),
         'engine_cc': row['engine_cc'],
         'stars': row['stars'],
-        'is_new': bool(row['is_new']),
+        'is_new': row['id'] in latest_ids(),
         'image_url': image_url(row),
         'report_url': row['report_url'],
         'country': row['country'],
@@ -305,7 +316,7 @@ def motorcycle_report(moto_id):
     response.headers['Cache-Control'] = 'public, max-age=3600'
     response.headers['X-Content-Type-Options'] = 'nosniff'
     return response
-    
+
 @app.get('/api/stats')
 def stats():
     row = query(
