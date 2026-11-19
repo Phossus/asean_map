@@ -53,11 +53,11 @@ RATING_SORTS = {
 
 def query(sql, args=()):
     options = {
-        'host': os.getenv('DB_HOST', 'aseanmap-dpqgwb.db.enzonic.com'),
+        'host': os.getenv('DB_HOST', 'localhost'),
         'port': int(os.getenv('DB_PORT', 3306)),
-        'user': os.getenv('DB_USER', 'u_iqtycwjr5h'),
-        'password': os.getenv('DB_PASSWORD', 'JKoVKwItlKiLQMzlB9XdRVsOUb0jEMsV'),
-        'database': os.getenv('DB_NAME', 'main'),
+        'user': os.getenv('DB_USER', 'asean_map'),
+        'password': os.getenv('DB_PASSWORD', ''),
+        'database': os.getenv('DB_NAME', 'asean_map'),
         'charset': 'utf8mb4',
         'cursorclass': DictCursor,
         'connect_timeout': 10,
