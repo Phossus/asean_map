@@ -1,0 +1,16 @@
+/* Contact page (load after css/about.css) */
+.contact-layout { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; }
+.contact-card { padding: var(--space-5); background: var(--color-surface); border: 1px solid var(--color-border); border-top: .4rem solid var(--color-primary); border-radius: var(--radius-lg); }
+.contact-card__org { margin-bottom: var(--space-4); font-size: var(--text-xl); line-height: 1.2; color: var(--color-primary); }
+.contact-list { display: grid; gap: var(--space-4); margin: 0 0 var(--space-4); }
+.contact-list dt { font-size: var(--text-sm); color: var(--color-text-muted); }
+.contact-list dd { margin: .125rem 0 0; font-style: normal; font-weight: 700; overflow-wrap: anywhere; }
+.contact-list address { font-style: normal; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.quick-links { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.quick-links a { display: block; padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-left: .4rem solid var(--color-accent); border-radius: var(--radius-lg); font-weight: 700; text-decoration: none; color: var(--color-primary); }
+.quick-links a:hover, .quick-links a:focus-visible { border-color: var(--color-primary); border-left-color: var(--color-primary); }
+.quick-links span { display: block; margin-top: .125rem; font-weight: 400; color: var(--color-text-muted); }
+.fact__text a { font-weight: 700; overflow-wrap: anywhere; }
+[data-theme='high-contrast'] .contact-card__org, [data-theme='high-contrast'] .quick-links a { color: #fff; }
+@media (max-width: 56rem) { .contact-layout { grid-template-columns: 1fr; gap: var(--space-5); } }

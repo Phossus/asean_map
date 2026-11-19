@@ -1,0 +1,74 @@
+/* About page: extra components. Uses the tokens from css/base/tokens.css */
+
+/* Banner */
+.page-banner { padding: var(--space-7) 0 var(--space-6); color: #fff; background: linear-gradient(100deg, rgba(10, 11, 13, .88) 0%, rgba(15, 53, 119, .78) 100%), url('../assets/images/hero/hero-2.jpg') center / cover no-repeat; border-bottom: 5px solid var(--color-accent); }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: var(--space-3); padding: 0; list-style: none; font-size: var(--text-sm); color: var(--color-on-dark); }
+.breadcrumb li + li::before { content: '/'; margin-right: .5rem; opacity: .6; }
+.breadcrumb a, .breadcrumb li[aria-current] { color: #fff; }
+.page-banner__title { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; }
+.page-banner__text { max-width: 42rem; margin-top: var(--space-3); font-size: var(--text-lg); color: var(--color-on-dark); }
+
+/* Intro + at-a-glance */
+.about-intro { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
+.about-intro p + p { margin-top: var(--space-3); }
+.about-intro__text { max-width: 44rem; }
+.glance { padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-top: .4rem solid var(--color-primary); border-radius: var(--radius-lg); }
+.glance__title { margin-bottom: var(--space-3); font-size: var(--text-lg); color: var(--color-primary); }
+.glance dl { display: grid; gap: var(--space-3); }
+.glance dt { font-size: var(--text-sm); color: var(--color-text-muted); }
+.glance dd { margin: 0; font-weight: 700; }
+
+/* Cards */
+.fact { padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-left: .4rem solid var(--color-primary); border-radius: var(--radius-lg); }
+.fact__title { margin-bottom: .375rem; font-size: 1.1875rem; color: var(--color-primary); }
+.fact__text { color: var(--color-text-muted); }
+
+/* Background: narrative + stats */
+.story { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: start; }
+.story__text { max-width: 44rem; }
+.story__text p + p { margin-top: var(--space-3); }
+.stat-stack { display: grid; gap: var(--space-3); }
+.big-stat { padding: var(--space-4); background: var(--color-primary); color: #fff; border-radius: var(--radius-lg); }
+.big-stat__value { font: 700 clamp(2.25rem, 4vw, 3rem)/1 var(--font-heading); color: var(--color-accent); }
+.big-stat__label { margin-top: .5rem; color: var(--color-on-dark); }
+.big-stat sup, .story sup { font-size: .7em; }
+.big-stat sup a { color: var(--color-on-dark); }
+
+/* Four assessment areas */
+.areas-grid { display: grid; gap: 1.375rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.area { padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.area__title { margin-bottom: .375rem; font-size: 1.1875rem; color: var(--color-primary); }
+.area__text { color: var(--color-text-muted); }
+
+/* Roadmap: this really is a sequence */
+.roadmap { position: relative; display: grid; gap: var(--space-4); margin: 0; padding: 0 0 0 2.25rem; list-style: none; }
+.roadmap::before { content: ''; position: absolute; top: .5rem; bottom: .5rem; left: .6rem; width: 3px; background: var(--color-border); border-radius: 2px; }
+.roadmap__item { position: relative; padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.roadmap__item::before { content: ''; position: absolute; top: 1.35rem; left: -2.05rem; width: 1.1rem; height: 1.1rem; background: var(--color-surface); border: 4px solid var(--color-primary); border-radius: 50%; }
+.roadmap__item--next::before { border-color: var(--color-accent); }
+.roadmap__when { font: 700 var(--text-lg)/1.2 var(--font-heading); color: var(--color-primary); }
+.roadmap__title { margin: .25rem 0; font-size: 1.1875rem; }
+.roadmap__text { color: var(--color-text-muted); }
+
+/* Countries */
+.chips { display: flex; flex-wrap: wrap; gap: .625rem; margin: 0; padding: 0; list-style: none; }
+.chip { padding: .5rem 1.125rem; background: var(--color-tint); border: 1px solid var(--color-border); border-radius: var(--radius-pill); font-weight: 700; color: var(--color-primary); }
+.chip--soon { background: transparent; border-style: dashed; color: var(--color-text-muted); font-weight: 400; }
+
+/* Why it matters */
+.about-list { display: grid; gap: var(--space-3); max-width: 46rem; margin: 0; padding: 0; list-style: none; }
+.about-list li { padding-left: 1.75rem; position: relative; }
+.about-list li::before { content: ''; position: absolute; left: 0; top: .6em; width: .75rem; height: .75rem; background: var(--color-red, #e01f26); border-radius: 2px; }
+
+/* Sources */
+.sources { max-width: 52rem; margin: 0; padding-left: 1.5rem; list-style: decimal; font-size: var(--text-sm); color: var(--color-text-muted); }
+.sources li + li { margin-top: .5rem; }
+.sources a { word-break: break-word; }
+
+[data-theme='high-contrast'] .glance__title, [data-theme='high-contrast'] .fact__title, [data-theme='high-contrast'] .area__title, [data-theme='high-contrast'] .roadmap__when, [data-theme='high-contrast'] .chip { color: #fff; }
+
+@media (max-width: 56rem) {
+  .areas-grid { grid-template-columns: 1fr; }
+  .about-intro, .story { grid-template-columns: 1fr; gap: var(--space-5); }
+  .page-banner { padding: var(--space-6) 0 var(--space-5); }
+}
